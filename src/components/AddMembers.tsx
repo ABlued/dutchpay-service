@@ -5,7 +5,7 @@ function AddMembers() {
   return (
     <div>
       <h1>Dutch Pay</h1>
-      <CenteredOverLayForm />
+      {/* <CenteredOverLayForm /> */}
     </div>
   );
 }
