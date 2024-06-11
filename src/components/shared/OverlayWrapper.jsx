@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export const OverlayWrapper = ({ children }: { children: React.ReactNode }) => (
+export const OverlayWrapper = ({ children }) => (
   <StyledContainer>{children}</StyledContainer>
 );
 
-const StyledContainer = styled.div<{ minHeight?: string; padding?: string }>`
+const StyledContainer = styled.div`
   border-radius: 15px;
   background-color: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

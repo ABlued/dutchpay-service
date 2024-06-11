@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
-import { OverlayWrapper } from "./shared/OverlayWrapper.tsx";
+import { OverlayWrapper } from "./shared/OverlayWrapper";
 
-function CenteredOverLayForm({ children }: { children: React.ReactNode }) {
+function CenteredOverLayForm(children) {
   return (
     <CentralizedContainer>
       <StyledHeader>Dutch Pay</StyledHeader>

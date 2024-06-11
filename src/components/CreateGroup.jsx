@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useRecoilState } from "recoil";
-import { groupNameState } from "../state/groupName.ts";
-import CenteredOverLayForm from "./CenteredOverLayForm.tsx";
+import { groupNameState } from "../state/groupName";
+import CenteredOverLayForm from "./CenteredOverLayForm";
 import styled from "styled-components";
 
 function CreateGroup() {
@@ -10,7 +10,7 @@ function CreateGroup() {
   const [validGroupName, setValidGroupName] = useState(false);
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity()) {
@@ -40,7 +40,7 @@ function CreateGroup() {
                   type='invalid'
                   data-valid={validGroupName}
                 >
-                  그룹 이름을 입력해주세요.
+                  {validGroupName ? "그룹 이름을 입력해주세요." : ""}
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
