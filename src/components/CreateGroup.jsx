@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
-import { useRecoilState } from "recoil";
-import { groupNameState } from "../state/groupName";
-import CenteredOverLayForm from "./CenteredOverLayForm";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { groupNameState } from "../state/groupName.js";
+import CenteredOverLayForm from "./CenteredOverLayForm.jsx";
 import styled from "styled-components";
 
 function CreateGroup() {
-  const [groupName, setGroupName] = useRecoilState(groupNameState);
+  const setGroupName = useSetRecoilState(groupNameState);
   const [validGroupName, setValidGroupName] = useState(false);
   const [validated, setValidated] = useState(false);
 

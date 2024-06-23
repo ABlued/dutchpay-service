@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import CreateGroup from "./components/CreateGroup.jsx/index";
-import ExpenseMain from "./components/ExpenseMain.tsx";
-import AddMembers from "./components/AddMembers.tsx";
+import CreateGroup from "./components/CreateGroup.jsx";
+import ExpenseMain from "./components/ExpenseMain.jsx";
+import AddMembers from "./components/AddMembers.jsx";
 import { RecoilRoot } from "recoil";
 function App() {
   return (
