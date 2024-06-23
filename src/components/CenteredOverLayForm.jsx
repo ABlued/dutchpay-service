@@ -1,20 +1,37 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { OverlayWrapper } from "./shared/OverlayWrapper.jsx";
+import { StyledH2 } from "./shared/StyledH2.jsx";
+import { StyledRow } from "./shared/StyledRow.jsx";
+import { StyledSubmitButton } from "./shared/StyledSubmitButton.jsx";
 
-function CenteredOverLayForm({ children }) {
+function CenteredOverLayForm({ title, children, handleSubmit, validated }) {
   return (
-    <CentralizedContainer>
-      <StyledHeader>Dutch Pay</StyledHeader>
-      <OverlayWrapper>{children}</OverlayWrapper>
-    </CentralizedContainer>
+    <StyledCentralizedContainer>
+      <StyledLogo>Dutch Pay</StyledLogo>
+      <OverlayWrapper>
+        <Container>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <StyledRow>
+              <Row className='align-items-start'>
+                <StyledH2>{title}</StyledH2>
+              </Row>
+              <Row className='align-items-center'>{children}</Row>
+              <Row className='align-items-end'>
+                <StyledSubmitButton>저장</StyledSubmitButton>
+              </Row>
+            </StyledRow>
+          </Form>
+        </Container>
+      </OverlayWrapper>
+    </StyledCentralizedContainer>
   );
 }
 
 export default CenteredOverLayForm;
 
-const CentralizedContainer = styled(Container)`
+const StyledCentralizedContainer = styled(Container)`
   width: 50vw;
   min-height: 100vh;
   display: flex;
@@ -25,6 +42,11 @@ const CentralizedContainer = styled(Container)`
   gap: 10px;
 `;
 
-const StyledHeader = styled.h1`
+const StyledLogo = styled.h1`
+  font-weight: 200;
+  letter-spacing: 10px;
+  color: slateblue;
+  text-align: center;
   font-weight: 700;
+  margin-bottom: 0.8em;
 `;

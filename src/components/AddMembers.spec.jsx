@@ -31,7 +31,7 @@ describe("그룹 멤버 추가 페이지", () => {
     const errorMessage = await screen.findByText(
       "그룹 멤버들의 이름을 입력해 주세요."
     );
-    expect(errorMessage).not.toBeInTheDocument();
+    expect(errorMessage).toBeInTheDocument();
   });
   test('그룹 멤버를 입력한 후, "저장" 버튼을 클릭시, 저장에 성공', async () => {
     const { input, saveButton } = renderComponent();
