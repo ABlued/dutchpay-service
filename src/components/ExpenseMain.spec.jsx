@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import { groupMembersState } from "../state/groupMember";
@@ -85,6 +85,32 @@ describe("비용 정산 메인 페이지", () => {
       expect(descErrorMessage).toHaveAttribute("data-valid", "true");
       expect(payerErrorMessage).toHaveAttribute("data-valid", "true");
       expect(amountErrorMessage).toHaveAttribute("data-valid", "true");
+    });
+  });
+
+  describe("비용 리스트 컴포넌트", () => {
+    test("비용 리스트 컴포넌트 렌더링 되는가?", () => {
+      renderComponent();
+      const expenseListComponent = screen.getByTestId("expenseList");
+      expect(expenseListComponent).toBeInTheDocument();
+    });
+  });
+  describe("새로운 비용이 입력 되었을 때", () => {
+    const addNewExpense = async () => {
+      const { dataInput, descInput, amountInput, payerInput, addButton } =
+        renderComponent();
+      await userEvent.type(dataInput, "2021-09-01");
+      await userEvent.type(descInput, "편의점에서 간식 구입");
+      await userEvent.type(amountInput, "10000");
+      await userEvent.selectOptions(payerInput, "철수");
+
+      userEvent.click(addButton);
+    };
+    test("날짜, 내용, 결제자, 급여 데이터가 정산 리스트에 추가 된다.", () => {
+      addNewExpense();
+      const expenseListComponent = screen.getByTestId("expenseList");
+      const dateValue = within(expenseListComponent).getByText("2021-09-01");
+      expect(dateValue).toBeInTheDocument();
     });
   });
 });
