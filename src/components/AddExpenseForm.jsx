@@ -18,7 +18,7 @@ export const AddExpenseForm = () => {
   const [isPayerValid, setIsPayerValid] = useState(false);
 
   const [desc, setDesc] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [payer, setPayer] = useState(null);
 
   const checkFormValidate = () => {
@@ -110,6 +110,7 @@ export const AddExpenseForm = () => {
                 <option disabled value=''>
                   누가 결제 했나요?
                 </option>
+                <option>철수</option>
                 {members &&
                   members.map((member) => (
                     <option key={member} value={member}>

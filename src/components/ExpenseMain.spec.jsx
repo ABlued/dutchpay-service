@@ -106,11 +106,21 @@ describe("비용 정산 메인 페이지", () => {
 
       userEvent.click(addButton);
     };
-    test("날짜, 내용, 결제자, 급여 데이터가 정산 리스트에 추가 된다.", () => {
-      addNewExpense();
+    test("날짜, 내용, 결제자, 급여 데이터가 정산 리스트에 추가 된다.", async () => {
+      await addNewExpense();
       const expenseListComponent = screen.getByTestId("expenseList");
       const dateValue = within(expenseListComponent).getByText("2021-09-01");
       expect(dateValue).toBeInTheDocument();
+
+      const descValue =
+        within(expenseListComponent).getByText("편의점에서 간식 구입");
+      expect(descValue).toBeInTheDocument();
+
+      const amountValue = within(expenseListComponent).getByText(/10000/i);
+      expect(amountValue).toBeInTheDocument();
+
+      const payerValue = within(expenseListComponent).getByText("철수");
+      expect(payerValue).toBeInTheDocument();
     });
   });
 });
