@@ -95,6 +95,16 @@ describe("비용 정산 메인 페이지", () => {
       expect(expenseListComponent).toBeInTheDocument();
     });
   });
+
+  describe("정산 결과 컴포넌트", () => {
+    test("정산 결과 컴포넌트 렌더링 되는가?", () => {
+      renderComponent();
+
+      const resultComponent = screen.getByText(/정산은 이렇게/i);
+      expect(resultComponent).toBeInTheDocument();
+    });
+  });
+
   describe("새로운 비용이 입력 되었을 때", () => {
     const addNewExpense = async () => {
       const { dataInput, descInput, amountInput, payerInput, addButton } =
@@ -121,6 +131,15 @@ describe("비용 정산 메인 페이지", () => {
 
       const payerValue = within(expenseListComponent).getByText("철수");
       expect(payerValue).toBeInTheDocument();
+    });
+
+    test("정산 결과 또한 업데이트 된다.", async () => {
+      await addNewExpense();
+      const totalText = screen.getByText(/2명 ~ 총 10000 원 지출/i);
+      expect(totalText).toBeInTheDocument();
+
+      const transactionText = screen.getByText(/영희가 철수에게 5000 원/i);
+      expect(transactionText).toBeInTheDocument();
     });
   });
 });
