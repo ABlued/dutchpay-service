@@ -5,11 +5,12 @@ import { OverlayWrapper } from "./shared/OverlayWrapper.jsx";
 import { StyledH2 } from "./shared/StyledH2.jsx";
 import { StyledRow } from "./shared/StyledRow.jsx";
 import { StyledSubmitButton } from "./shared/StyledSubmitButton.jsx";
+import { StyledLogo } from "./shared/ServiceLogo.jsx";
 
 function CenteredOverLayForm({ title, children, handleSubmit, validated }) {
   return (
     <StyledCentralizedContainer>
-      <StyledLogo>Dutch Pay</StyledLogo>
+      <StyledLogo />
       <OverlayWrapper>
         <Container>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -40,13 +41,4 @@ const StyledCentralizedContainer = styled(Container)`
   align-items: center;
   padding: 0px;
   gap: 10px;
-`;
-
-const StyledLogo = styled.h1`
-  font-weight: 200;
-  letter-spacing: 10px;
-  color: slateblue;
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 0.8em;
 `;

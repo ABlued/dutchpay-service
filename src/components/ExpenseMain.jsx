@@ -5,6 +5,8 @@ import { styled } from "styled-components";
 import { AddExpenseForm } from "./AddExpenseForm";
 import ExpenseTable from "./ExpenseTable";
 import { groupNameState } from "../state/groupName";
+import SettlementSummary from "./SettlementSummary";
+import { StyledLogo } from "./shared/ServiceLogo";
 function ExpenseMain() {
   return (
     <Container>
@@ -24,7 +26,15 @@ export default ExpenseMain;
 
 const LeftPane = () => (
   <Container>
-    <AddExpenseForm />
+    <Row>
+      <StyledLogo />
+    </Row>
+    <Row>
+      <AddExpenseForm /> 
+    </Row>
+    <Row>
+      <SettlementSummary />
+    </Row>
   </Container>
 );
 
